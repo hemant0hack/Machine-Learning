@@ -1,15 +1,23 @@
 from sklearn.linear_model import LinearRegression
+import numpy as np
 
-hours= [[2],[4],[6],[8]]
-marks= [60,70,80,90]
+# Input data (study hours)
+X = np.array([1, 2, 3, 4, 5, 6]).reshape(-1, 1)
 
-model= LinearRegression()
+# Output data (marks)
+y = np.array([10, 20, 30, 40, 50, 60])
 
-model.fit(hours,marks)
+# Create model
+model = LinearRegression()
 
-new_hours =[[10]]
+# Train model
+model.fit(X, y)
 
-predicted_marks = model.predict(new_hours)
+# Predict marks for 7 study hours
+prediction = model.predict([[7]])
 
-print("hours",new_hours[0][0])
-print("Predicted marks:",predicted_marks)
+print("Predicted Marks:", prediction[0])
+
+# Show slope and intercept
+print("Slope:", model.coef_[0])
+print("Intercept:", model.intercept_)
